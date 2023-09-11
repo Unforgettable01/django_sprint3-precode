@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Лента записей
+{% endblock %}
+
+{% block content %}
+  <div class="container py-5">
+    <h1>Лента записей</h1>
+    {% for post in list_posts %}
+      <hr />
+      {% include 'blog/includes/content_text.html' with index_point=True %}
+    {% endfor %}
+  </div>
+{% endblock %}
