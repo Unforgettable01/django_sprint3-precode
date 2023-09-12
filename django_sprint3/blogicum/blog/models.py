@@ -32,7 +32,9 @@ class Post(BaseModel):
     location = models.ForeignKey(
         Location,
         on_delete=models.SET_NULL,
-        null=True)
+        null=True,
+        blank=True)
     category = models.ForeignKey(
         Category,        
-        on_delete=models.SET_NULL)
+        on_delete=models.SET_NULL,
+        null=True)
