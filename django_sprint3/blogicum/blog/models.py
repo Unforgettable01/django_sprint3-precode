@@ -15,19 +15,11 @@ class BaseModel(models.Model):
 class Location(BaseModel):
     name = models.CharField(max_length=256)
 
-    class Meta:
-        varbose_name = 'географическая метка'
-        varbose_name_plyral = 'Географические метки'
-
 
 class Category(BaseModel):
     title = models.CharField(max_length=256)
     description = models.TextField()
     slug = models.SlugField(unique=True)
-    
-    class Meta:
-        varbose_name = 'категория'
-        varbose_name_plyral = 'Категории'
 
 
 class Post(BaseModel):
@@ -44,7 +36,3 @@ class Post(BaseModel):
     category = models.ForeignKey(
         Category,        
         on_delete=models.SET_NULL)
-        
-    class Meta:
-        varbose_name = 'публикация'
-        varbose_name_plyral = 'Публикации'
