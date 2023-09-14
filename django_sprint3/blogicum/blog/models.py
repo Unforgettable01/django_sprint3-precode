@@ -32,8 +32,8 @@ class Category(BaseModel):
     slug = models.SlugField(
         unique=True,
         verbose_name='Идентификатор',
-        help_text=('Идентификатор страницы для URL;'
-                   'разрешены символы латиницы, цифры, дефис и подчёркивание.'))
+        help_text=('Идентификатор страницы для URL; '
+        'разрешены символы латиницы, цифры, дефис и подчёркивание.'))
 
     class Meta:
         verbose_name = 'категория'
@@ -59,7 +59,8 @@ class Post(BaseModel):
         Category,        
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name='Категория')
+        verbose_name='Категория',
+        related_name='category')
     
     class Meta:
         verbose_name = 'публикация'
