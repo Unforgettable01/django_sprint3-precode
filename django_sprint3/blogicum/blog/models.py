@@ -1,23 +1,12 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from abstracts import BaseModelSpecific, BaseModel
+
 
 User = get_user_model()
 
 
-class BaseModel(models.Model):
-    is_published = models.BooleanField(
-        default=True,
-        verbose_name='Опубликовано',
-        help_text='Снимите галочку, чтобы скрыть публикацию.')
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Добавлено')
-
-    class Meta:
-        abstract = True
-
-
-class Location(BaseModel):
+class Location(BaseModelSpecific):
     name = models.CharField(
         max_length=256,
         verbose_name='Название места')
@@ -27,8 +16,7 @@ class Location(BaseModel):
         verbose_name_plural = 'Местоположения'
 
 
-class Category(BaseModel):
-    title = models.CharField(max_length=256, verbose_name='Заголовок')
+class Category(BaseModelSpecific, BaseModel):
     description = models.TextField(verbose_name='Описание')
     slug = models.SlugField(
         unique=True,
@@ -42,8 +30,7 @@ class Category(BaseModel):
         verbose_name_plural = 'Категории'
 
 
-class Post(BaseModel):
-    title = models.CharField(max_length=256, verbose_name='Заголовок')
+class Post(BaseModelSpecific, BaseModel):
     text = models.TextField(verbose_name='Текст')
     pub_date = models.DateTimeField(
         verbose_name='Дата и время публикации',
