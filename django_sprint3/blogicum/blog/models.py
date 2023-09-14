@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from abstracts import BaseModelSpecific, BaseModel
+from blog.abstracts import BaseModelSpecific, BaseModel
 
 
 User = get_user_model()
